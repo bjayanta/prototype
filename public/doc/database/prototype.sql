@@ -2,10 +2,10 @@
 -- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 03, 2019 at 01:27 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Host: 127.0.0.1
+-- Generation Time: Feb 04, 2019 at 08:32 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -58,7 +58,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01903402828', 'bjayanta.neo@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'o54mRK6oqwEJkqN2CgGtDuhg2LhX0ZJ0SwDsm7TQVShgy4D9hGTn0tUnUYd4', '2018-12-11 21:36:17', '2018-12-12 01:19:54'),
+(1, 'Jayanta Biswas', '01903402828', 'bjayanta.neo@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'caouEsoTBs4sMneGEIn5eRsJTMEuujfn0rhxhGQquXGvFM2fpcdkWYqvbB4U', '2018-12-11 21:36:17', '2018-12-12 01:19:54'),
 (2, 'USITSolution', '01775219457', 'hello@usitsolution.net', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2018-12-12 01:20:01'),
 (3, 'Shibbir Ahmed', '01766263681', 'shibbirweb@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-01-04 15:17:02');
 
@@ -103,7 +103,113 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2018_12_01_102758_create_admins_table', 2),
 (4, '2018_12_03_124721_create_permissions_table', 3),
-(5, '2018_12_04_123752_create_roles_table', 4);
+(5, '2018_12_04_123752_create_roles_table', 4),
+(6, '2016_06_01_000001_create_oauth_auth_codes_table', 5),
+(7, '2016_06_01_000002_create_oauth_access_tokens_table', 5),
+(8, '2016_06_01_000003_create_oauth_refresh_tokens_table', 5),
+(9, '2016_06_01_000004_create_oauth_clients_table', 5),
+(10, '2016_06_01_000005_create_oauth_personal_access_clients_table', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('8d043baec7c74fe019d0e2bf4ccc8b381711adca835a31946ca432b8617ebc61181ccc2377068c43', 2, 1, 'MyApp', '[]', 0, '2019-02-04 13:24:55', '2019-02-04 13:24:55', '2020-02-04 19:24:55'),
+('f30fc259dd5fc8e3f8364b37de3701ad2c26a30a358dcb1f44a61ed328a5eeeb178d704cfb6c6270', 2, 1, 'Hello', '[]', 0, '2019-02-04 13:19:03', '2019-02-04 13:19:03', '2020-02-04 19:19:03');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+CREATE TABLE `oauth_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Prototype Personal Access Client', 'obqYA1LXthawcmMUP5XYivAuEWfzypXLvF3nC0NU', 'http://localhost', 1, 0, 0, '2019-02-04 09:02:21', '2019-02-04 09:02:21'),
+(2, NULL, 'Prototype Password Grant Client', 'VlS9vcdQOHSSto6n416ZM1qVzZJnBk1XcKSWivsb', 'http://localhost', 0, 1, 0, '2019-02-04 09:02:21', '2019-02-04 09:02:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `client_id` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2019-02-04 09:02:21', '2019-02-04 09:02:21');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -236,7 +342,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `email_verified_at`, `password`, `account_type`, `activation_token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, 'kHiWJ3dDqd7Rf3Vf7jCZWcPtoNVhQG6jkkq8bSVotCrTun6nA9BN03fqyDc7', '2018-12-11 21:36:17', '2018-12-11 21:36:34');
+(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, '5Roco9J3No6nYUb5lg8Wr6Ohs2YzYyJ8EQVZuSfYKGUbkKMD11ApA3NdqZSI', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
+(2, 'Robin Biswas', '01792017966', 'brobin.neo@gmail.com', NULL, '$2y$10$OkG3kpyZohg9tox4oiHAIu4f7egpQ0PtqvtND6Sf3A26x.gJSt/dO', 'general', NULL, 1, 'LuB2kOYrG5AvAypjVHxKIcZ1AnOVi9RyHBNe4jkhwplQB6djMSa86Xdtice8', '2019-02-04 13:17:33', '2019-02-04 13:17:33');
 
 --
 -- Indexes for dumped tables
@@ -269,6 +376,40 @@ ALTER TABLE `admin_role`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_access_tokens`
+--
+ALTER TABLE `oauth_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_access_tokens_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_auth_codes`
+--
+ALTER TABLE `oauth_auth_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_clients_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_personal_access_clients_client_id_index` (`client_id`);
+
+--
+-- Indexes for table `oauth_refresh_tokens`
+--
+ALTER TABLE `oauth_refresh_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -330,7 +471,19 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -354,7 +507,7 @@ ALTER TABLE `usermeta`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
