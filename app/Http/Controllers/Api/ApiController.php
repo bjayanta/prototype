@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Validator;
 use App\Models\User\User;
+use App\Models\Admin\Role;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -55,9 +56,20 @@ class ApiController extends Controller {
         return response()->json(['success' => $success], 200);
     }
 
-    public function getDetails() {
+    /**
+     * header options
+     * Authorization: Bearer <Token>
+     * Accept: application/json
+     *
+     */
+    public function getUser() {
         $user = Auth::user();
-
         return response()->json(['success' => $user], 200);
     }
+
+    public function getRoles() {
+        $roles = Role::all();
+        return response()->json(['success' => $roles], 200);
+    }
+
 }
