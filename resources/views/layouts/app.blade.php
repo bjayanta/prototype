@@ -39,6 +39,15 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Localization -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('locale/en') }}">EN</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('locale/bn') }}">BN</a>
+                        </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -84,6 +93,7 @@
             </div>
 
             @yield('content')
+
         </main>
     </div>
 </body>

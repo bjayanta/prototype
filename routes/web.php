@@ -11,8 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function () {return view('welcome');});
+
+Route::get('/locale/{lang}', function($lang) {
+    \Session::put('locale', $lang);
+    return redirect()->back();
 });
 
 Auth::routes();
