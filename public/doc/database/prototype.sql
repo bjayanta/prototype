@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2019 at 01:10 PM
+-- Generation Time: Feb 09, 2019 at 11:42 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -108,7 +108,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (7, '2016_06_01_000002_create_oauth_access_tokens_table', 5),
 (8, '2016_06_01_000003_create_oauth_refresh_tokens_table', 5),
 (9, '2016_06_01_000004_create_oauth_clients_table', 5),
-(10, '2016_06_01_000005_create_oauth_personal_access_clients_table', 5);
+(10, '2016_06_01_000005_create_oauth_personal_access_clients_table', 5),
+(12, '2019_02_09_100842_create_metadata_table', 6);
 
 -- --------------------------------------------------------
 
@@ -135,13 +136,15 @@ CREATE TABLE `oauth_access_tokens` (
 INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
 ('0115bacdce11650939f8aa8d7396d24797ba47b8083890e31cc9e4a49104012304b10e1526db5584', 9, 3, 'MyApp', '[]', 0, '2019-02-05 06:04:29', '2019-02-05 06:04:29', '2020-02-05 12:04:29'),
 ('0c2a65e0efd239c0028272d6424ba0dc195beef3575ac603253681c64b5e264abcb9f6ca767ca854', 6, 3, 'MyApp', '[]', 0, '2019-02-05 05:46:09', '2019-02-05 05:46:09', '2020-02-05 11:46:09'),
+('1fd6e95bf895de153f0f3d0fea10c6bd0b9b1608c7cc7d947acdc523baa5f9e6fc3aee5655e1112e', 1, 3, 'MyApp', '[]', 0, '2019-02-05 21:31:07', '2019-02-05 21:31:07', '2020-02-06 03:31:07'),
 ('535d45f387cc266aecce0178c434df2624d797ae69d8882a033cdb148e323e3793ad7f38a6bee43d', 1, 3, 'MyApp', '[]', 0, '2019-02-05 04:56:14', '2019-02-05 04:56:14', '2020-02-05 10:56:14'),
 ('623dea669927c5d28fa70802941774e14431efe79bab2417e83a02250630edf1308b51cee224a4c1', 1, 3, 'Hello', '[]', 1, '2019-02-04 22:41:53', '2019-02-04 22:41:53', '2020-02-05 04:41:53'),
 ('839e8778108add8700b51e3a74cbe7c6900a5e13d7b445d256bb1dac5df4444dfc8398f31a975432', 9, 3, 'MyApp', '[]', 0, '2019-02-05 06:01:10', '2019-02-05 06:01:10', '2020-02-05 12:01:10'),
 ('89b929ee63a5056170b41536ca82cc179a1278e09c15566932f6c4731eda653c1c71150e58cd1802', 5, 3, 'MyApp', '[]', 0, '2019-02-05 05:30:51', '2019-02-05 05:30:51', '2020-02-05 11:30:51'),
 ('8d043baec7c74fe019d0e2bf4ccc8b381711adca835a31946ca432b8617ebc61181ccc2377068c43', 2, 1, 'MyApp', '[]', 0, '2019-02-04 13:24:55', '2019-02-04 13:24:55', '2020-02-04 19:24:55'),
 ('8ef8b176bc542dca7925d3410e20bafac219eba297e1233482eeee98e28fd4322eba5fe529c2ff75', 3, 3, 'MyApp', '[]', 0, '2019-02-05 05:25:39', '2019-02-05 05:25:39', '2020-02-05 11:25:39'),
-('f30fc259dd5fc8e3f8364b37de3701ad2c26a30a358dcb1f44a61ed328a5eeeb178d704cfb6c6270', 2, 1, 'Hello', '[]', 0, '2019-02-04 13:19:03', '2019-02-04 13:19:03', '2020-02-04 19:19:03');
+('f30fc259dd5fc8e3f8364b37de3701ad2c26a30a358dcb1f44a61ed328a5eeeb178d704cfb6c6270', 2, 1, 'Hello', '[]', 0, '2019-02-04 13:19:03', '2019-02-04 13:19:03', '2020-02-04 19:19:03'),
+('f8ea74596e49ce241f61abe49a2d2db96d8cd3ae75901d5babcc21c27987a5813d13ad8cf1ef81ec', 1, 3, 'MyApp', '[]', 0, '2019-02-05 21:08:51', '2019-02-05 21:08:51', '2020-02-06 03:08:51');
 
 -- --------------------------------------------------------
 
@@ -482,7 +485,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`

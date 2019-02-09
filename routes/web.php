@@ -47,3 +47,7 @@ Route::group(['namespace' => 'Admin'], function() {
 	Route::post('admin-logout', 'Auth\LoginController@logout')->name('admin.logout');
 });
 
+// routes for 2nd database connection
+Route::get('get-meta', 'Lab\MetaController@getMeta');
+Route::get('set-meta', 'Lab\MetaController@setMeta');
+
