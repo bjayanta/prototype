@@ -2,6 +2,7 @@
 Simple laravel 5.7 project for developer. 
 
 ## Features :
+- Laravel Collective 
 - Multi authentication system
   - User panel
   - Admin panel
@@ -9,3 +10,4 @@ Simple laravel 5.7 project for developer.
 - Localization
   - English
   - Bangla 
+- 
