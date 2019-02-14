@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Api;
 
 use Validator;
 use App\Models\User\User;
-use App\Models\Admin\Role;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use App\Events\Auth\UserActivationEmail;
 
-class ApiController extends Controller {
-
+class CredentialController extends Controller {
     public function login(Request $request) {
         if(Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
+
+            // set the app name
             $success['token'] = $user->createToken('MyApp')->accessToken;
 
             return response()->json(['success' => $success], 200);
@@ -54,22 +54,6 @@ class ApiController extends Controller {
         event(new UserActivationEmail($user));
 
         return response()->json(['success' => $success], 200);
-    }
-
-    /**
-     * header options
-     * Authorization: Bearer <Token>
-     * Accept: application/json
-     *
-     */
-    public function getUser() {
-        $user = Auth::user();
-        return response()->json(['success' => $user], 200);
-    }
-
-    public function getRoles() {
-        $roles = Role::all();
-        return response()->json(['success' => $roles], 200);
     }
 
 }

@@ -17,11 +17,12 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('login', 'Api\ApiController@login');
-Route::post('register', 'Api\ApiController@register');
+// Credential route
+Route::post('login', 'Api\CredentialController@login');
+Route::post('register', 'Api\CredentialController@register');
 
 Route::group(['middleware' => 'auth:api'], function() {
-    Route::post('/get-user', 'Api\ApiController@getUser');
-    Route::post('/get-roles', 'Api\ApiController@getRoles');
+    // User route
+    Route::get('/get-user', 'Api\UserController@getUser');
 });
 
