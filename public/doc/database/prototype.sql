@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 14, 2019 at 06:09 AM
+-- Generation Time: Feb 24, 2019 at 09:08 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -58,7 +58,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01903402828', 'bjayanta.neo@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'caouEsoTBs4sMneGEIn5eRsJTMEuujfn0rhxhGQquXGvFM2fpcdkWYqvbB4U', '2018-12-11 21:36:17', '2018-12-12 01:19:54'),
+(1, 'Jayanta Biswas', '01903402828', 'bjayanta.neo@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, '6TQsEa1NMAyllyJgyQr5nJjkvT6DCveOU6cpPGhrIcwpwsyNX6gN2ZgjUnyK', '2018-12-11 21:36:17', '2018-12-12 01:19:54'),
 (2, 'USITSolution', '01775219457', 'hello@usitsolution.net', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2018-12-12 01:20:01'),
 (3, 'Shibbir Ahmed', '01766263681', 'shibbirweb@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-01-04 15:17:02');
 
@@ -109,7 +109,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2016_06_01_000003_create_oauth_refresh_tokens_table', 5),
 (9, '2016_06_01_000004_create_oauth_clients_table', 5),
 (10, '2016_06_01_000005_create_oauth_personal_access_clients_table', 5),
-(12, '2019_02_09_100842_create_metadata_table', 6);
+(13, '2019_02_24_074218_create_appdatas_table', 6);
 
 -- --------------------------------------------------------
 
@@ -488,7 +488,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`

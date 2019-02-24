@@ -12,7 +12,7 @@ Simple laravel 5.7 project for developer.
   - English
   - Bangla 
 - Multi Database Handle
-  - MySQL & Ready configuration
+  - SQLite & Ready configuration
     - How to Migrate and Rollback
     - How to use in Model
     - How to use in Query builder
