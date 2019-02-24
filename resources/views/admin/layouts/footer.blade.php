@@ -4,12 +4,5 @@
 	All rights reserved.
 </p>
 
-{{-- jquery --}}
- <script type="text/javascript" src="{{ asset('admin/js/jquery-3.3.1.min.js') }}"></script>
-
-{{-- bootstrap js --}}
- <script type="text/javascript" src="{{ asset('admin/js/popper.min.js') }}"></script>
- <script type="text/javascript" src="{{ asset('admin/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
- 
 {{-- add scripts --}}
-@stack('scripts')
+@stack('script')

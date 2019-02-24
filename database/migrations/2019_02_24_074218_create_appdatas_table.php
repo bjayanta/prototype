@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetadataTable extends Migration
+class CreateAppdatasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMetadataTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql_sys')->create('metadata', function (Blueprint $table) {
+        Schema::connection('sqlite')->create('appdatas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('auth');
-            $table->string('email');
-            $table->string('website');
+            $table->string('key');
+            $table->string('value')->nullable();
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMetadataTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql_sys')->dropIfExists('metadata');
+        Schema::connection('sqlite')->dropIfExists('appdatas');
     }
 }
