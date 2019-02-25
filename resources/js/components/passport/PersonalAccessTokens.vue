@@ -205,7 +205,7 @@
              * Get all of the personal access tokens for the user.
              */
             getTokens() {
-                axios.get('/prototype/oauth/personal-access-tokens')
+                axios.get('./oauth/personal-access-tokens')
                         .then(response => {
                             this.tokens = response.data;
                         });
@@ -215,7 +215,7 @@
              * Get all of the available scopes.
              */
             getScopes() {
-                axios.get('/prototype/oauth/scopes')
+                axios.get('./oauth/scopes')
                         .then(response => {
                             this.scopes = response.data;
                         });
@@ -236,7 +236,7 @@
 
                 this.form.errors = [];
 
-                axios.post('/prototype/oauth/personal-access-tokens', this.form)
+                axios.post('./oauth/personal-access-tokens', this.form)
                         .then(response => {
                             this.form.name = '';
                             this.form.scopes = [];
@@ -288,7 +288,7 @@
              * Revoke the given token.
              */
             revoke(token) {
-                axios.delete('/prototype/oauth/personal-access-tokens/' + token.id)
+                axios.delete('./oauth/personal-access-tokens/' + token.id)
                         .then(response => {
                             this.getTokens();
                         });
