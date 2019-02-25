@@ -39,7 +39,7 @@ Route::group(['namespace' => 'Admin'], function() {
 	Route::resource('admin/role', 'RoleController');
 
 	// permission resource routes
-	Route::resource('admin/permission', 'PermissionController');
+    Route::resource('admin/permission', 'PermissionController');
 
 	// admin auth
 	Route::get('admin-login', 'Auth\LoginController@showLoginForm')->name('admin.login');
@@ -48,6 +48,7 @@ Route::group(['namespace' => 'Admin'], function() {
 });
 
 // routes for 2nd database connection
-Route::get('get-meta', 'Lab\MetaController@getMeta');
-Route::get('set-meta', 'Lab\MetaController@setMeta');
+Route::get('get-meta', 'SystemController@getMeta');
+Route::get('set-meta', 'SystemController@setMeta');
+Route::get('set-meta2', 'SystemController@setMeta2');
 
