@@ -13,7 +13,7 @@
 
     |
 
-    <a href="">
+    <a href="{{ route('account.edit', Auth::user()->id) }}">
         <strong>{{ ucfirst(Auth::user()->name) }}</strong>
     </a>
 

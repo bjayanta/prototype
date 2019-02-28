@@ -34,5 +34,18 @@ class Admin extends Authenticatable
     public function getNameAttribute($value) {
         return ucfirst($value);
     }
-    
+
+    public function hasAccess(array $permissions) {
+        // dd($permissions);
+        // dd($this->roles);
+
+        foreach($this->roles as $role) {
+            if($role->hasAccess($permissions)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

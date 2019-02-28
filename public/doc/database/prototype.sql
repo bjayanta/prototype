@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 24, 2019 at 09:08 AM
+-- Generation Time: Feb 28, 2019 at 12:58 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -58,9 +58,12 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01903402828', 'bjayanta.neo@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, '6TQsEa1NMAyllyJgyQr5nJjkvT6DCveOU6cpPGhrIcwpwsyNX6gN2ZgjUnyK', '2018-12-11 21:36:17', '2018-12-12 01:19:54'),
-(2, 'USITSolution', '01775219457', 'hello@usitsolution.net', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2018-12-12 01:20:01'),
-(3, 'Shibbir Ahmed', '01766263681', 'shibbirweb@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-01-04 15:17:02');
+(1, 'Jayanta Biswas', '01775219457', 'uis360.jayanta@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'SzCK7TdJFHur6FcLzDPKuYQ8DMh2toIyFj6gxzQFReYVCuTDQACDSTg9EszX', '2018-12-11 21:36:17', '2019-02-28 00:49:44'),
+(2, 'Shahid Nawaz', '01761913331', 'uis360.msn@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2019-02-28 00:52:13'),
+(3, 'Imran Sajjad', '01716798094', 'uis360.imran@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'WSO42EDcY2vlg39vCz96832HI3M5JHRMTOTWxjFW1v2qcWkC8OXwhWbVFAQC', '2019-01-04 15:17:02', '2019-02-28 00:52:21'),
+(4, 'Maruf Hasan', '01735189237', 'uis360.maruf@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'yWYaKXU24IZTg9vMHsqJL35EGn3osNR58Jj20H6ql4F7b72keCHvyv2kFXp6', '2019-01-04 15:17:02', '2019-02-28 00:52:28'),
+(5, 'Ariful Islam', '01833774348', 'uis360.arif@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:40'),
+(6, 'Suman Rajvhor', '01712179034', 'uis360.raj@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:58');
 
 -- --------------------------------------------------------
 
@@ -79,8 +82,11 @@ CREATE TABLE `admin_role` (
 
 INSERT INTO `admin_role` (`admin_id`, `role_id`) VALUES
 (1, 1),
-(2, 3),
-(3, 1);
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 1);
 
 -- --------------------------------------------------------
 
@@ -257,10 +263,10 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `slug`, `menu`, `description`) VALUES
-(1, 'Tag Create', 'tag-create', 'tag', 'Tag Create'),
-(2, 'Tag Update', 'tag-update', 'tag', 'Tag Update'),
-(3, 'Tag Delete', 'tag-delete', 'tag', 'Tag Delete'),
-(4, 'Tag Publish', 'tag-publish', 'tag', 'Tag Publish');
+(5, 'Account create', 'account-create', 'account', NULL),
+(6, 'Account update', 'account-update', 'account', NULL),
+(7, 'Account delete', 'account-delete', 'account', NULL),
+(8, 'Account view', 'account-view', 'account', NULL);
 
 -- --------------------------------------------------------
 
@@ -278,21 +284,17 @@ CREATE TABLE `permission_role` (
 --
 
 INSERT INTO `permission_role` (`role_id`, `permission_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(3, 4),
-(4, 1),
-(4, 2),
-(4, 3),
-(5, 1),
-(5, 2),
-(3, 2);
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 8),
+(3, 5),
+(3, 6),
+(3, 8);
 
 -- --------------------------------------------------------
 
@@ -357,7 +359,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `email`, `email_verified_at`, `password`, `account_type`, `activation_token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, 'IsC0829pxK4pfKh8ew0X7X5TmIoRnsyXeAp3xZpkoEMXygAPgm8eIyVqjgUV', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
+(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, 'zQGS4nNuVOn0NMVBFZmdD7VrWFCwDwtM9MJr0iaRR0Pn3JwGb7lGQ2CTPnPS', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
 (2, 'Robin Biswas', '01792017966', 'brobin.neo@gmail.com', NULL, '$2y$10$OkG3kpyZohg9tox4oiHAIu4f7egpQ0PtqvtND6Sf3A26x.gJSt/dO', 'general', NULL, 1, 'LuB2kOYrG5AvAypjVHxKIcZ1AnOVi9RyHBNe4jkhwplQB6djMSa86Xdtice8', '2019-02-04 13:17:33', '2019-02-04 13:17:33'),
 (9, 'Maruf Hasan', '01735189237', 'emarufhasan@gmail.com', NULL, '$2y$10$TvVkDU3WChvQePMF3/3RCe/CXvZNLUgXt1Iqj9EADKAe0AuJpg4Y6', 'general', NULL, 1, 'oW7FexapaiDChKd9gaBvgQWvFdFcR2fQ9sPDGstzu6THrnKCXPDW7Gi0GhaG', '2019-02-05 06:01:10', '2019-02-05 06:01:46'),
 (10, 'Jayanta Biswas', '01903402828', 'uis360.jayanta@gmail.com', NULL, '$2y$10$0nRxJVeS8Sxe1LittraCyOMTh8YPqktzh0cLaYkEh5czFdSQnAJxG', 'general', NULL, 1, 'B6shoAdF81gA0oheyn9oC0yzDqn4OQVSPKxfrAypt4NaUoCOulKX2LG6NzkU', '2019-02-13 23:01:01', '2019-02-13 23:02:09');
@@ -482,7 +484,7 @@ ALTER TABLE `adminmeta`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -506,7 +508,7 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `roles`

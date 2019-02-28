@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+// use Cookie;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // set cookie
+        // Cookie::queue('key', 'value', 10080); // for 7 days = 10080 mins
+
+        // get cookie
+        // Cookie::get('freebee');
+
         return view('home');
     }
 

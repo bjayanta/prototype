@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Gate;
+use Auth;
+use App\Models\Admin\Role;
+use App\Models\Admin\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
-use App\Models\Admin\Admin;
-use App\Models\Admin\Role;
 
 class AccountController extends Controller
 {
@@ -21,10 +22,12 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        $users = Admin::all();
-        // dd($users);
+        if(Gate::allows('account-create', auth()->user())) {
+            $users = Admin::all();
+            return view('admin.account.show', compact('users'));
+        }
 
-        return view('admin.account.show', compact('users'));
+        return "This action not for you.";
     }
 
     /**
@@ -115,7 +118,7 @@ class AccountController extends Controller
      */
     public function destroy($id) {
         Admin::where('id', $id)->delete();
-        
+
         return redirect()->back()->with('message', 'Admin is deleted successfully!');
     }
 }

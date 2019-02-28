@@ -25,13 +25,18 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+        $this->registerAccountPolicies();
 
         //
-        Gate::resource('tags', 'App\Policies\TagPolicy');
-        Gate::resource('posts', 'App\Policies\PostPolicy');
 
         // This method will register the routes necessary to issue access tokens and revoke access tokens, clients, and personal access tokens:
         Passport::routes();
 
+    }
+
+    public function registerAccountPolicies() {
+        Gate::define('account-create', function($user) {
+            return $user->hasAccess(['account-create']);
+        });
     }
 }
