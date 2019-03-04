@@ -41,11 +41,10 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Localization -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('locale/en') }}">EN</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('locale/bn') }}">BN</a>
+                            @php
+                                $locale = (Config::get('app.locale') == 'en') ? 'bn' : 'en';
+                            @endphp
+                            <a class="nav-link" href="{{ url('locale/' . $locale) }}">{{ strtoupper($locale) }}</a>
                         </li>
 
                         <!-- Authentication Links -->
@@ -61,7 +60,7 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('api-token') }}">API Token</a>
+                                <a class="nav-link" href="{{ url('api-token') }}">Passport</a>
                             </li>
 
                             <li class="nav-item dropdown">

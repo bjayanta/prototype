@@ -29,9 +29,6 @@ Route::get('/api-token', 'HomeController@generateToken');
 Route::group(['namespace' => 'Admin'], function() {
 	Route::get('admin/home', 'HomeController@index')->name('admin.home');
 
-	// tag resource routes
-	Route::resource('admin/tag', 'TagController');
-
 	// account resource routes
 	Route::resource('admin/account', 'AccountController');
 
