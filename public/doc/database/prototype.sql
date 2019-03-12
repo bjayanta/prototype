@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2019 at 12:58 PM
+-- Generation Time: Mar 12, 2019 at 01:09 PM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -45,6 +45,7 @@ CREATE TABLE `admins` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0 or 1',
@@ -57,13 +58,13 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'uis360.jayanta@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'SzCK7TdJFHur6FcLzDPKuYQ8DMh2toIyFj6gxzQFReYVCuTDQACDSTg9EszX', '2018-12-11 21:36:17', '2019-02-28 00:49:44'),
-(2, 'Shahid Nawaz', '01761913331', 'uis360.msn@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2019-02-28 00:52:13'),
-(3, 'Imran Sajjad', '01716798094', 'uis360.imran@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'WSO42EDcY2vlg39vCz96832HI3M5JHRMTOTWxjFW1v2qcWkC8OXwhWbVFAQC', '2019-01-04 15:17:02', '2019-02-28 00:52:21'),
-(4, 'Maruf Hasan', '01735189237', 'uis360.maruf@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'yWYaKXU24IZTg9vMHsqJL35EGn3osNR58Jj20H6ql4F7b72keCHvyv2kFXp6', '2019-01-04 15:17:02', '2019-02-28 00:52:28'),
-(5, 'Ariful Islam', '01833774348', 'uis360.arif@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:40'),
-(6, 'Suman Rajvhor', '01712179034', 'uis360.raj@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:58');
+INSERT INTO `admins` (`id`, `name`, `phone`, `username`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Jayanta Biswas', '01775219457', 'uis360.jayanta', 'uis360.jayanta@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'nLd9ods0CHSsYLEVNpOWC3BrWfD6jbCo4F2oxT2LnjDuTmm1Pzn4fRncA6Rx', '2018-12-11 21:36:17', '2019-02-28 00:49:44'),
+(2, 'Shahid Nawaz', '01761913331', 'uis360.msn', 'uis360.msn@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2019-02-28 00:52:13'),
+(3, 'Imran Sajjad', '01716798094', 'uis360.imran', 'uis360.imran@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'WSO42EDcY2vlg39vCz96832HI3M5JHRMTOTWxjFW1v2qcWkC8OXwhWbVFAQC', '2019-01-04 15:17:02', '2019-02-28 00:52:21'),
+(4, 'Maruf Hasan', '01735189237', 'uis360.maruf', 'uis360.maruf@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'yVeHdrnA9GVpJO6YRa0j0DWbYjpTOP4ee9z9TyM64nCbiHAf3Eqc18m6VQAl', '2019-01-04 15:17:02', '2019-02-28 00:52:28'),
+(5, 'Ariful Islam', '01833774348', 'uis360.arif', 'uis360.arif@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:40'),
+(6, 'Suman Rajvhor', '01712179034', 'uis360.raj', 'uis360.raj@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:58');
 
 -- --------------------------------------------------------
 
@@ -343,6 +344,7 @@ CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -358,11 +360,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `phone`, `email`, `email_verified_at`, `password`, `account_type`, `activation_token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, 'zQGS4nNuVOn0NMVBFZmdD7VrWFCwDwtM9MJr0iaRR0Pn3JwGb7lGQ2CTPnPS', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
-(2, 'Robin Biswas', '01792017966', 'brobin.neo@gmail.com', NULL, '$2y$10$OkG3kpyZohg9tox4oiHAIu4f7egpQ0PtqvtND6Sf3A26x.gJSt/dO', 'general', NULL, 1, 'LuB2kOYrG5AvAypjVHxKIcZ1AnOVi9RyHBNe4jkhwplQB6djMSa86Xdtice8', '2019-02-04 13:17:33', '2019-02-04 13:17:33'),
-(9, 'Maruf Hasan', '01735189237', 'emarufhasan@gmail.com', NULL, '$2y$10$TvVkDU3WChvQePMF3/3RCe/CXvZNLUgXt1Iqj9EADKAe0AuJpg4Y6', 'general', NULL, 1, 'oW7FexapaiDChKd9gaBvgQWvFdFcR2fQ9sPDGstzu6THrnKCXPDW7Gi0GhaG', '2019-02-05 06:01:10', '2019-02-05 06:01:46'),
-(10, 'Jayanta Biswas', '01903402828', 'uis360.jayanta@gmail.com', NULL, '$2y$10$0nRxJVeS8Sxe1LittraCyOMTh8YPqktzh0cLaYkEh5czFdSQnAJxG', 'general', NULL, 1, 'B6shoAdF81gA0oheyn9oC0yzDqn4OQVSPKxfrAypt4NaUoCOulKX2LG6NzkU', '2019-02-13 23:01:01', '2019-02-13 23:02:09');
+INSERT INTO `users` (`id`, `name`, `phone`, `username`, `email`, `email_verified_at`, `password`, `account_type`, `activation_token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, '12C29tl9rWpeLznxiObKeNOMe3WbMmcPTJWSCmzu9tThKrTWkJI57uR3VpxQ', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
+(2, 'Robin Biswas', '01792017966', 'brobin.neo', 'brobin.neo@gmail.com', NULL, '$2y$10$OkG3kpyZohg9tox4oiHAIu4f7egpQ0PtqvtND6Sf3A26x.gJSt/dO', 'general', NULL, 1, 'LuB2kOYrG5AvAypjVHxKIcZ1AnOVi9RyHBNe4jkhwplQB6djMSa86Xdtice8', '2019-02-04 13:17:33', '2019-02-04 13:17:33'),
+(9, 'Maruf Hasan', '01735189237', 'emarufhasan', 'emarufhasan@gmail.com', NULL, '$2y$10$TvVkDU3WChvQePMF3/3RCe/CXvZNLUgXt1Iqj9EADKAe0AuJpg4Y6', 'general', NULL, 1, 'oW7FexapaiDChKd9gaBvgQWvFdFcR2fQ9sPDGstzu6THrnKCXPDW7Gi0GhaG', '2019-02-05 06:01:10', '2019-02-05 06:01:46'),
+(10, 'Jayanta Biswas', '01903402828', 'uis360.jayanta', 'uis360.jayanta@gmail.com', NULL, '$2y$10$0nRxJVeS8Sxe1LittraCyOMTh8YPqktzh0cLaYkEh5czFdSQnAJxG', 'general', NULL, 1, 'C3Vr8uh9aEQkDRc3wxb2j7qlVP1CKGzuwB2tSWt3iKA2vnUVVz5QKEOyxFP6', '2019-02-13 23:01:01', '2019-02-13 23:02:09');
 
 --
 -- Indexes for dumped tables

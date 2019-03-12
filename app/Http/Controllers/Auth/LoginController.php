@@ -54,13 +54,40 @@ class LoginController extends Controller
             $this->username() => [
                 'required', 
                 'string',
-                Rule::exists('users')->where(function($query) {
+				/*
+				Rule::exists('users')->where(function($query) {
                     $query->where('status', true);
                 }),
+				*/
             ],
             'password' => 'required|string',
         ], $this->validationError());
     }
+	
+	/**
+     * Get the needed authorization credentials from the request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function credentials(Request $request)
+    {
+        $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
+            : 'username';
+			
+        return [
+            $field => $request->get($this->username()),
+            'password' => $request->password,
+        ];
+    }
+	
+	/*
+    protected function credentials(Request $request)
+    {
+        return $request->only($this->username(), 'password');
+    }
+	*/
 
     /**
      * Get the validation error for login
