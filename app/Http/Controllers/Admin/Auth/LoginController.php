@@ -69,13 +69,25 @@ class LoginController extends Controller
     }
 
     protected function credentials(Request $request) {
-        $admin = Admin::where('email', $request->email)->first();
+		// set login field
+		$field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
+            ? $this->username()
+            : 'username';
+		
+		// get user data
+        // $admin = Admin::where('email', $request->email)->first();
+		$admin = Admin::where($field, $request->get($this->username()))->first();
 
         if($admin !== null) {
             if($admin->status == 0) {
                 return ['email' => 'inactive', 'password' => 'You are not an active persone, please contact to admin.'];
             } else {
-                return ['email' => $request->email, 'password' => $request->password, 'status' => 1];
+                // return ['email' => $request->email, 'password' => $request->password, 'status' => 1];
+				return [
+                    $field => $request->get($this->username()),
+                    'password' => $request->password,
+                    'status' => 1
+                ];
             }
         }
 
