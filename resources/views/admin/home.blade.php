@@ -2,7 +2,7 @@
 
 @section('title', 'Dashboard')
 
-@section('main-content')
+@section('content')
 <!-- Main Content -->
 <div class="container">
     <h3>I am Dashboard</h3>
@@ -19,6 +19,18 @@
     @can('account-create')
         <h4>Permission granted</h4>
     @endcan
+
+    <div class="form-group">
+        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>
+
+            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection
+
 

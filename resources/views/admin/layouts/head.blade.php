@@ -9,6 +9,8 @@
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
+<link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet">
+
 <!-- Styles -->
 <link href="{{ asset('public/admin/css/app-admin.css') }}" rel="stylesheet">
 
