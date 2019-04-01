@@ -2,7 +2,7 @@
 
 @section('title', 'New Accounts')
 
-@section('main-content')
+@section('content')
 <!-- Main Content -->
 <div class="container">
     @if ($errors->any())

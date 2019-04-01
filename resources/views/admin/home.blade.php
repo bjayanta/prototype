@@ -20,6 +20,10 @@
         <h4>Permission granted</h4>
     @endcan
 
+    <hr>
+
+    <hr>
+
     <div class="form-group">
         <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
             <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"/>

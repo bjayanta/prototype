@@ -44,6 +44,7 @@
                             @php
                                 $locale = (Config::get('app.locale') == 'en') ? 'bn' : 'en';
                             @endphp
+
                             <a class="nav-link" href="{{ url('locale/' . $locale) }}">{{ strtoupper($locale) }}</a>
                         </li>
 

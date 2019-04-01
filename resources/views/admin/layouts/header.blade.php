@@ -1,6 +1,12 @@
 <nav>
     <a href="{{ route('admin.home') }}">Dashboard</a>
+
+
+
     <a href="{{ route('account.index') }}">Users</a>
+
+
+
     <a href="{{ route('role.index') }}">Roles</a>
     <a href="{{ route('permission.index') }}">Permission</a>
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">

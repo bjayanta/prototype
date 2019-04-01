@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Policies\AccountPolicy;
 use Laravel\Passport\Passport;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -26,8 +27,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         $this->registerAccountPolicies();
-
-        //
 
         // This method will register the routes necessary to issue access tokens and revoke access tokens, clients, and personal access tokens:
         Passport::routes();

@@ -24,6 +24,9 @@ class Role extends Model
     public function hasPermission(string $permission) {
         $status = false;
 
+        // dd($this->permissions->toArray());
+        // dd($permission);
+
         foreach($this->permissions as $data) {
             if($data->slug == $permission) {
                 $status = true;

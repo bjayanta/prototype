@@ -37,7 +37,6 @@ class AccountController extends Controller
      */
     public function create() {
         $roles = Role::all();
-
         return view('admin.account.create', compact('roles'));
     }
 
