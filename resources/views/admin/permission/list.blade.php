@@ -2,7 +2,7 @@
 
 @section('title', 'All Permissions')
 
-@section('main-content')
+@section('content')
 <!-- Main Content -->
 <div class="container">
 	<a href="{{ route('permission.create') }}">Add New</a>

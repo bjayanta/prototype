@@ -5,7 +5,10 @@
 @section('content')
 <!-- Main Content -->
 <div class="container">
-	<a href="{{ route('account.create') }}">Add New</a>
+
+	@can('account-create')
+		<a href="{{ route('account.create') }}">Add New</a>
+	@endcan
 	
 	<!-- deleted message -->
 	<div></div>
@@ -19,8 +22,14 @@
 				<th>Mail</th>
 				<th>Role(s)</th>
 				<th>Status</th>
-				<th>Edit</th>
-				<th>Delete</th>
+
+				@can('account-update')
+					<th>Edit</th>
+				@endcan
+
+				@can('account-delete')
+					<th>Delete</th>
+				@endcan
 			</tr>
 		</thead>
 
@@ -39,14 +48,20 @@
 					</td>
 
 					<td>{{ $user->status ? 'Active' : 'Not Active' }}</td>
-					<td><a href="{{ route('account.edit', $user->id) }}">Edit</a></td>
-					<td>
-						<a href="{{ route('account.index') }}" onClick="if(confirm('Are you sure, You want to delete this?')){event.preventDefault();document.getElementById('delete-form-{{ $user->id }}').submit();} else {event.preventDefault();}">Delete</a>
-						<form action="{{ route('account.destroy', $user->id) }}" method="post" id="delete-form-{{ $user->id }}" style="display: none;">
-							{{ csrf_field() }}
-							{{ method_field('DELETE') }}
-						</form>
-					</td>
+
+					@can('account-update')
+						<td><a href="{{ route('account.edit', $user->id) }}">Edit</a></td>
+					@endcan
+
+					@can('account-delete')
+						<td>
+							<a href="{{ route('account.index') }}" onClick="if(confirm('Are you sure, You want to delete this?')){event.preventDefault();document.getElementById('delete-form-{{ $user->id }}').submit();} else {event.preventDefault();}">Delete</a>
+							<form action="{{ route('account.destroy', $user->id) }}" method="post" id="delete-form-{{ $user->id }}" style="display: none;">
+								{{ csrf_field() }}
+								{{ method_field('DELETE') }}
+							</form>
+						</td>
+					@endcan
 				</tr>
 			@endforeach
 
@@ -57,8 +72,14 @@
 				<th>Mail</th>
 				<th>Role(s)</th>
 				<th>Status</th>
-				<th>Edit</th>
-				<th>Delete</th>
+
+				@can('account-update')
+					<th>Edit</th>
+				@endcan
+
+				@can('account-delete')
+					<th>Delete</th>
+				@endcan
 			</tr>
 		</tbody>
 	</table>

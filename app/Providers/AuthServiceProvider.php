@@ -37,5 +37,18 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('account-create', function($user) {
             return $user->hasAccess(['account-create']);
         });
+
+        Gate::define('account-view', function($user) {
+            return $user->hasAccess(['account-view']);
+        });
+
+        Gate::define('account-update', function($user) {
+            return $user->hasAccess(['account-update']);
+        });
+
+        Gate::define('account-delete', function($user) {
+            return $user->hasAccess(['account-delete']);
+        });
     }
+
 }

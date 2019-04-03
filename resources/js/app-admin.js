@@ -9,15 +9,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-// import moment js
-import moment from 'moment';
-Vue.prototype.moment = moment;
-window.moment = moment;
-
-// import tempusdominus-bootstrap-4
-require('tempusdominus-bootstrap-4');
-import 'tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css';
-
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -44,22 +35,4 @@ Vue.component('passport-personal-access-tokens', require('./components/passport/
 
 const app = new Vue({
     el: '#app'
-});
-
-// configure datepicker
-$.fn.datetimepicker.Constructor.Default = $.extend({}, $.fn.datetimepicker.Constructor.Default, {
-    icons: {
-        time: 'icon ion-ios-time',
-        date: 'icon ion-ios-calendar',
-        up: 'icon ion-ios-arrow-up',
-        down: 'icon ion-ios-arrow-down',
-        previous: 'icon ion-ios-arrow-back',
-        next: 'icon ion-ios-arrow-forward',
-        today: 'icon ion-ios-calendar',
-        clear: 'icon ion-ios-trash',
-        close: 'icon ion-ios-times'
-    } });
-
-$(function () {
-    $('#datetimepicker1').datetimepicker();
 });

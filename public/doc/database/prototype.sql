@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 12, 2019 at 01:09 PM
+-- Generation Time: Apr 03, 2019 at 07:59 AM
 -- Server version: 10.1.35-MariaDB
 -- PHP Version: 7.2.9
 
@@ -21,6 +21,32 @@ SET time_zone = "+00:00";
 --
 -- Database: `prototype`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `accesslogs`
+--
+
+CREATE TABLE `accesslogs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user` int(11) NOT NULL,
+  `ip` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `genus` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'in',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `accesslogs`
+--
+
+INSERT INTO `accesslogs` (`id`, `user`, `ip`, `genus`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, '::1', 'admin', 'out', '2019-04-03 05:28:35', '2019-04-03 05:49:59'),
+(2, 10, '::1', 'web', 'out', '2019-04-03 05:46:55', '2019-04-03 05:47:07'),
+(3, 1, '::1', 'admin', 'in', '2019-04-03 05:50:09', '2019-04-03 05:50:09'),
+(4, 10, '192.168.0.77', 'web', 'out', '2019-04-03 05:56:18', '2019-04-03 05:56:59');
 
 -- --------------------------------------------------------
 
@@ -59,11 +85,10 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `phone`, `username`, `email`, `password`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'uis360.jayanta', 'uis360.jayanta@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'nLd9ods0CHSsYLEVNpOWC3BrWfD6jbCo4F2oxT2LnjDuTmm1Pzn4fRncA6Rx', '2018-12-11 21:36:17', '2019-02-28 00:49:44'),
+(1, 'Jayanta Biswas', '01775219457', 'uis360.jayanta', 'uis360.jayanta@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, '2LMgcTTvF8hXZVSowJ2cAHTPchoHcmCR31at9hCcGQJiJOUrYAAI5f3ngs9t', '2018-12-11 21:36:17', '2019-02-28 00:49:44'),
 (2, 'Shahid Nawaz', '01761913331', 'uis360.msn', 'uis360.msn@gmail.com', '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 1, 'ivgrOigAPIh4iV9HkwhaVXGINMuDthgSgQjyN67NHo1rlIqddVCEQBLiQzmm', '2018-12-11 21:36:17', '2019-02-28 00:52:13'),
 (3, 'Imran Sajjad', '01716798094', 'uis360.imran', 'uis360.imran@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'WSO42EDcY2vlg39vCz96832HI3M5JHRMTOTWxjFW1v2qcWkC8OXwhWbVFAQC', '2019-01-04 15:17:02', '2019-02-28 00:52:21'),
 (4, 'Maruf Hasan', '01735189237', 'uis360.maruf', 'uis360.maruf@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, 'yVeHdrnA9GVpJO6YRa0j0DWbYjpTOP4ee9z9TyM64nCbiHAf3Eqc18m6VQAl', '2019-01-04 15:17:02', '2019-02-28 00:52:28'),
-(5, 'Ariful Islam', '01833774348', 'uis360.arif', 'uis360.arif@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:40'),
 (6, 'Suman Rajvhor', '01712179034', 'uis360.raj', 'uis360.raj@gmail.com', '$2y$10$2j6.fes7CxsAx3/gnHMHKe/Rsgm6RN28mu4zOIgb.MGcn96NTfUOm', 1, NULL, '2019-01-04 15:17:02', '2019-02-28 00:52:58');
 
 -- --------------------------------------------------------
@@ -86,7 +111,6 @@ INSERT INTO `admin_role` (`admin_id`, `role_id`) VALUES
 (2, 2),
 (3, 3),
 (4, 4),
-(5, 5),
 (6, 1);
 
 -- --------------------------------------------------------
@@ -116,7 +140,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (8, '2016_06_01_000003_create_oauth_refresh_tokens_table', 5),
 (9, '2016_06_01_000004_create_oauth_clients_table', 5),
 (10, '2016_06_01_000005_create_oauth_personal_access_clients_table', 5),
-(13, '2019_02_24_074218_create_appdatas_table', 6);
+(13, '2019_02_24_074218_create_appdatas_table', 6),
+(14, '2019_04_03_112459_create_accesslogs_table', 7);
 
 -- --------------------------------------------------------
 
@@ -285,17 +310,17 @@ CREATE TABLE `permission_role` (
 --
 
 INSERT INTO `permission_role` (`role_id`, `permission_id`) VALUES
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
 (2, 5),
 (2, 6),
 (2, 7),
 (2, 8),
 (3, 5),
 (3, 6),
-(3, 8);
+(3, 8),
+(1, 8),
+(1, 5),
+(1, 6),
+(1, 7);
 
 -- --------------------------------------------------------
 
@@ -361,14 +386,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `phone`, `username`, `email`, `email_verified_at`, `password`, `account_type`, `activation_token`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, '12C29tl9rWpeLznxiObKeNOMe3WbMmcPTJWSCmzu9tThKrTWkJI57uR3VpxQ', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
+(1, 'Jayanta Biswas', '01775219457', 'bjayanta.neo', 'bjayanta.neo@gmail.com', NULL, '$2y$10$/z7b8pAxERc9Jg0MD506xu4qWXW3tvzgt9FAjZ5k6SE3mOardojnC', 'general', NULL, 1, 'D3uh9eadYwTF90y85tVDqNVBfRIXM0meUYacJerVuHzsigG0K6a3GOgbOIOb', '2018-12-11 21:36:17', '2018-12-11 21:36:34'),
 (2, 'Robin Biswas', '01792017966', 'brobin.neo', 'brobin.neo@gmail.com', NULL, '$2y$10$OkG3kpyZohg9tox4oiHAIu4f7egpQ0PtqvtND6Sf3A26x.gJSt/dO', 'general', NULL, 1, 'LuB2kOYrG5AvAypjVHxKIcZ1AnOVi9RyHBNe4jkhwplQB6djMSa86Xdtice8', '2019-02-04 13:17:33', '2019-02-04 13:17:33'),
 (9, 'Maruf Hasan', '01735189237', 'emarufhasan', 'emarufhasan@gmail.com', NULL, '$2y$10$TvVkDU3WChvQePMF3/3RCe/CXvZNLUgXt1Iqj9EADKAe0AuJpg4Y6', 'general', NULL, 1, 'oW7FexapaiDChKd9gaBvgQWvFdFcR2fQ9sPDGstzu6THrnKCXPDW7Gi0GhaG', '2019-02-05 06:01:10', '2019-02-05 06:01:46'),
-(10, 'Jayanta Biswas', '01903402828', 'uis360.jayanta', 'uis360.jayanta@gmail.com', NULL, '$2y$10$0nRxJVeS8Sxe1LittraCyOMTh8YPqktzh0cLaYkEh5czFdSQnAJxG', 'general', NULL, 1, 'C3Vr8uh9aEQkDRc3wxb2j7qlVP1CKGzuwB2tSWt3iKA2vnUVVz5QKEOyxFP6', '2019-02-13 23:01:01', '2019-02-13 23:02:09');
+(10, 'Jayanta Biswas', '01903402828', 'uis360.jayanta', 'uis360.jayanta@gmail.com', NULL, '$2y$10$0nRxJVeS8Sxe1LittraCyOMTh8YPqktzh0cLaYkEh5czFdSQnAJxG', 'general', NULL, 1, 'O7bafcvDWYyyqBY8e6fytS2BdhS4fT7sFfITGnhqlD75GfVyXjcz5ISSdlVr', '2019-02-13 23:01:01', '2019-02-13 23:02:09');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `accesslogs`
+--
+ALTER TABLE `accesslogs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `adminmeta`
@@ -477,6 +508,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `accesslogs`
+--
+ALTER TABLE `accesslogs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `adminmeta`
 --
 ALTER TABLE `adminmeta`
@@ -492,7 +529,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`

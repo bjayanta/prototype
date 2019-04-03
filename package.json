@@ -19,8 +19,5 @@
         "popper.js": "^1.12",
         "vue": "^2.5.17"
     },
-    "dependencies": {
-        "moment": "^2.24.0",
-        "tempusdominus-bootstrap-4": "^5.1.2"
-    }
+    "dependencies": {}
 }

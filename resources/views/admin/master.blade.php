@@ -12,12 +12,14 @@
 
             <main>
                 <div class="container">
-                    {{-- include confirmation message --}}
-                    @include('admin.layouts.partials.alert')
+                    <div class="row">
+                        {{-- include confirmation message --}}
+                        @include('admin.layouts.partials.alert')
 
-                    {{-- include main content --}}
-                    @section('content')
-                        @show
+                        {{-- include main content --}}
+                        @section('content')
+                            @show
+                    </div>
                 </div>
             </main>
         </div>

@@ -2,7 +2,7 @@
 
 @section('title', 'Update Permission')
 
-@section('main-content')
+@section('content')
 <!-- Main Content -->
 <div class="container">
     @if ($errors->any())

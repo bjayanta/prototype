@@ -22,7 +22,7 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        if(Gate::allows('account-create', auth()->user())) {
+        if(Gate::allows('account-view', auth()->user())) {
             $users = Admin::all();
             return view('admin.account.show', compact('users'));
         }
@@ -36,8 +36,12 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-        $roles = Role::all();
-        return view('admin.account.create', compact('roles'));
+        if(Gate::allows('account-create', auth()->user())) {
+            $roles = Role::all();
+            return view('admin.account.create', compact('roles'));
+        }
+
+        return "This action not for you.";
     }
 
     /**
@@ -81,10 +85,14 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        $user = Admin::find($id);
-        $roles = Role::all();
+        if(Gate::allows('account-update', auth()->user())) {
+            $user = Admin::find($id);
+            $roles = Role::all();
 
-        return view('admin.account.edit', compact('user', 'roles'));
+            return view('admin.account.edit', compact('user', 'roles'));
+        }
+
+        return "This action not for you.";
     }
 
     /**
@@ -116,8 +124,11 @@ class AccountController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id) {
-        Admin::where('id', $id)->delete();
+        if(Gate::allows('account-delete', auth()->user())) {
+            Admin::where('id', $id)->delete();
+            return redirect()->back()->with('message', 'Admin is deleted successfully!');
+        }
 
-        return redirect()->back()->with('message', 'Admin is deleted successfully!');
+        return "This action not for you.";
     }
 }

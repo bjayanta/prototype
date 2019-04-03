@@ -22,6 +22,12 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Auth\UserActivationEmail' => [
             'App\Listeners\Auth\SendActivationEmail',
         ],
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\TraceUserLogin',
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\TraceUserLogout',
+        ],
     ];
 
     /**

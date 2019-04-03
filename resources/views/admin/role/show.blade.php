@@ -2,7 +2,7 @@
 
 @section('title', 'All Roles')
 
-@section('main-content')
+@section('content')
 <!-- Main Content -->
 <div class="container">
 	<a href="{{ route('role.create') }}">Add New</a>
