@@ -13,10 +13,7 @@
 
 Route::get('/', function () {return view('welcome');});
 
-Route::get('/locale/{lang}', function($lang) {
-    \Session::put('locale', $lang);
-    return redirect()->back();
-});
+Route::get('/locale/{lang}', 'LocaleController@changeLocale');
 
 Auth::routes();
 
