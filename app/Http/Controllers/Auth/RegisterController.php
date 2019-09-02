@@ -57,6 +57,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:255', 'unique:users'],
+            'username' => ['required', 'alpha_dash', 'max:255', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'confirmed'],
         ]);
@@ -72,6 +73,7 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'username' => $data['username'],
             'phone' => $data['phone'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
@@ -94,12 +96,12 @@ class RegisterController extends Controller
 
         $this->guard()->logout();
 
-        return redirect()->route('login')->withSuccess('Registared. Please check your email to active your account.');
+        return redirect()->route('login')->withSuccess('Registered. Please check your email to active your account.');
     }
 
     public function activate(Request $request) {
         $user = User::byActivationColumns($request->email, $request->token)->firstOrFail();
-        
+
         $user->update([
             'activation_token' => null,
             'status' => 1
