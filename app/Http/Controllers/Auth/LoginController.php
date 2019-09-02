@@ -52,18 +52,17 @@ class LoginController extends Controller
     {
         $request->validate([
             $this->username() => [
-                'required', 
+                'required',
                 'string',
-				/*
-				Rule::exists('users')->where(function($query) {
+				Rule::exists('users', (filter_var($this->username(), FILTER_VALIDATE_EMAIL)) ? 'email' : 'username')->where(function($query) {
                     $query->where('status', true);
                 }),
-				*/
+
             ],
             'password' => 'required|string',
         ], $this->validationError());
     }
-	
+
 	/**
      * Get the needed authorization credentials from the request.
      *
@@ -75,13 +74,13 @@ class LoginController extends Controller
         $field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
             ? $this->username()
             : 'username';
-			
+
         return [
             $field => $request->get($this->username()),
             'password' => $request->password,
         ];
     }
-	
+
 	/*
     protected function credentials(Request $request)
     {
@@ -91,7 +90,7 @@ class LoginController extends Controller
 
     /**
      * Get the validation error for login
-     * 
+     *
      * @return array
      */
     public function validationError() {
