@@ -57,7 +57,7 @@ class LoginController extends Controller
 
     protected function sendLoginResponse(Request $request) {
         $request->session()->regenerate();
-        
+
         return $this->authenticated($request, $this->guard()->user()) ?: redirect()->intended($this->redirectPath());
     }
 
@@ -73,14 +73,14 @@ class LoginController extends Controller
 		$field = filter_var($request->get($this->username()), FILTER_VALIDATE_EMAIL)
             ? $this->username()
             : 'username';
-		
+
 		// get user data
         // $admin = Admin::where('email', $request->email)->first();
 		$admin = Admin::where($field, $request->get($this->username()))->first();
 
         if($admin !== null) {
             if($admin->status == 0) {
-                return ['email' => 'inactive', 'password' => 'You are not an active persone, please contact to admin.'];
+                return ['email' => 'inactive', 'password' => 'You are not an active person, please contact to admin.'];
             } else {
                 // return ['email' => $request->email, 'password' => $request->password, 'status' => 1];
 				return [
