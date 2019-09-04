@@ -1,13 +1,16 @@
 # Prototype
-Simple laravel 5.7 project for developer.
+Simple Laravel 6.0 project for developer.
 
 ## Features :
 - Laravel Collective 
 - Customize the model with model directory
 - Multi authentication system
   - User panel
+    - Login with username or email
   - Admin panel
+    - Login with username or email
 - Laravel passport
+    - Login with username or email
 - Localization
   - English
   - Bangla 

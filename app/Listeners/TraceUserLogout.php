@@ -26,7 +26,9 @@ class TraceUserLogout
      * @return void
      */
     public function handle(Logout $event) {
-        // dd($event->user);
+        //dd($event->user);
+
+        if ($event->user === null) return; // for first time registration
 
         $where = [
             ['user', '=', $event->user->id],

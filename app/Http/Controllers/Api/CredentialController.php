@@ -12,7 +12,7 @@ use App\Events\Auth\UserActivationEmail;
 
 class CredentialController extends Controller {
     public function login(Request $request) {
-        if(Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
+        if(Auth::attempt([(filter_var($request['email'], FILTER_VALIDATE_EMAIL)) ? 'email' : 'username' => request('email'), 'password' => request('password')])) {
             $user = Auth::user();
 
             // set the app name
@@ -27,6 +27,7 @@ class CredentialController extends Controller {
     public function register(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
+            'username' => 'required|alpha_dash|max:255|unique:users',
             'phone' => 'required|unique:users,phone',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
@@ -41,6 +42,7 @@ class CredentialController extends Controller {
 
         $user = User::create([
             'name' => $input['name'],
+            'username' => $input['username'],
             'phone' => $input['phone'],
             'email' => $input['email'],
             'password' => bcrypt($input['password']),
